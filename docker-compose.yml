@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: localbazaar-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: localbazaar
+      MYSQL_USER: bazaar
+      MYSQL_PASSWORD: bazaar
+    ports:
+      - "3306:3306"
+    volumes:
+      - localbazaar_mysql:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+volumes:
+  localbazaar_mysql:
